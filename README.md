@@ -1,4 +1,4 @@
-# Travian Farm Assistant v4.3
+# Travian Farm Assistant v4.8
 
 Android WebView assistant for Travian Farm List automation.
 
@@ -70,3 +70,27 @@ The workflow builds `:app:assembleDebug` and uploads the debug APK as an artifac
 - Resource Builder baru dimulai setelah fase Farm List benar-benar selesai.
 - Jika halaman Farm List belum siap saat verifikasi, aplikasi tetap menunggu dan tidak langsung memulai builder.
 - VersionCode 24 / versionName 4.4.
+
+
+## v4.7
+- Memperbaiki error compile `Unresolved reference: wrappers` pada verifikasi fallback Farm List.
+- Jumlah `.farmListWrapper` sekarang diparsing dari hasil JavaScript sebelum dipakai oleh Kotlin.
+- VersionCode 25 / versionName 4.5.
+
+## v4.8
+
+- Live WebView menggunakan User-Agent desktop dan wide viewport.
+- Panel aplikasi dapat di-scroll dan daftar village dapat dimuat.
+- Setiap village dapat dicentang untuk menentukan target Resource Builder.
+- Pilihan village disimpan dan diteruskan ke background service.
+- Resource Builder tidak memproses village yang tidak dipilih.
+
+
+## v4.10.0 UI
+- 3 tab utama: Farm Res Builder, Capacity Overview, Log.
+- Capacity Overview membaca resource current/capacity per village dari scanner.
+- Snapshot dashboard disimpan di SharedPreferences agar tetap terlihat setelah Activity dibuka kembali.
+
+
+## v4.14.0
+Verbose debug tracing added at function entry points. High-frequency UI refresh functions remain Logcat-only to avoid excessive 12-hour log-file growth.
