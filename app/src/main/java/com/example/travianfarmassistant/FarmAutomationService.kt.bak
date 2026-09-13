@@ -36,7 +36,6 @@ class FarmAutomationService : Service() {
         private var visibleWebViewRef: WeakReference<WebView>? = null
 
         fun attachVisibleWebView(view: WebView) {
-            // Live WebView is monitor-only; automation always uses the service WebView.
             visibleWebViewRef = WeakReference(view)
         }
 
@@ -426,7 +425,7 @@ class FarmAutomationService : Service() {
 
     private fun automationWebView(): WebView? {
         debugTrace("ENTER automationWebView")
-        return webView
+        return visibleWebViewRef?.get() ?: webView
     }
 
     private fun handleVisiblePageFinished(url: String) {
@@ -564,7 +563,7 @@ class FarmAutomationService : Service() {
             return
         }
 
-        if (webView == null) {
+        if (webView == null && visibleWebViewRef?.get() == null) {
             ensureServiceWebView()
         }
 
